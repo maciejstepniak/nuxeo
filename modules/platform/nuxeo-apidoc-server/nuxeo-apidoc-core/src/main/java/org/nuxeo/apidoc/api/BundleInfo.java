@@ -52,6 +52,9 @@ public interface BundleInfo extends NuxeoArtifact {
     String PROP_DEPLOYMENT_ORDER = "nxbundle:deploymentOrder";
 
     /** @since 11.1 */
+    String PROP_PACKAGES = "nxbundle:packages";
+
+    /** @since 11.1 */
     String RUNTIME_CONFIG_BUNDLE = "org.nuxeo.ecm.config";
 
     @JsonManagedReference("bundle")
@@ -127,5 +130,17 @@ public interface BundleInfo extends NuxeoArtifact {
      * @since 11.1
      */
     void setDeploymentOrder(Long order);
+
+    /**
+     * Returns the list of Nuxeo packages containing this bundle.
+     * <p>
+     * Even if a given bundle will probably be only in one package, in theory it could be included in several packages,
+     * hence the list.
+     * <p>
+     * TODO: give details on the actual id (with version or not, typically).
+     *
+     * @since 11.1
+     */
+    List<String> getPackages();
 
 }

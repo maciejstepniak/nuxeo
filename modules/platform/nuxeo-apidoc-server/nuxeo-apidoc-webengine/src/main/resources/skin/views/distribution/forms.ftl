@@ -76,7 +76,7 @@
                 <td><textarea rows="4" cols="30" name="bundles"></textarea></td>
               </tr>
               <tr>
-                <td class="nowrap">Packages prefixes</td>
+                <td class="nowrap">JAVA Packages prefixes</td>
                 <td><textarea rows="4" cols="30" name="packages"></textarea></td>
               </tr>
               <tr>
