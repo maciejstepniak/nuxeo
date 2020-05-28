@@ -8,6 +8,11 @@
 			name="removeProcessForDeletedDocument">
 			<event>aboutToRemove</event>
 		</listener>
+		<listener async="true" postCommit="false"
+			class="org.nuxeo.ecm.platform.task.core.listener.DeleteTaskForDeletedDocumentRouteListener"
+			name="removeTasksForDeletedDocumentRoute">
+			<event>aboutToRemove</event>
+		</listener>
 	</extension>
 
 </component>
