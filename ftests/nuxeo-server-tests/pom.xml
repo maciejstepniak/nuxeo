@@ -80,6 +80,14 @@
       <artifactId>nuxeo-platform-oauth1</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- excluded from chemistry-opencmis-commons-impl for groupId & version issues -->
+    <dependency>
+      <groupId>com.fasterxml.woodstox</groupId>
+      <artifactId>woodstox-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
