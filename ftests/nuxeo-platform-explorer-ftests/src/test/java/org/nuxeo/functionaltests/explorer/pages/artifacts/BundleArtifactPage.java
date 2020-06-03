@@ -46,6 +46,9 @@ public class BundleArtifactPage extends ArtifactPage {
     @FindBy(xpath = "//table[@class='listTable']")
     public WebElement mavenDetails;
 
+    @FindBy(xpath = "//ul[contains(@class, 'packages')]")
+    public WebElement packages;
+
     public BundleArtifactPage(WebDriver driver) {
         super(driver);
     }
@@ -59,8 +62,8 @@ public class BundleArtifactPage extends ArtifactPage {
         if (legacy) {
             groupTitle = "In bundle group apidoc";
         }
-        checkCommon("Bundle org.nuxeo.apidoc.core", "Bundle org.nuxeo.apidoc.core", groupTitle,
-                "Documentation\n" + "Deployment Order\n" + "Components\n" + "Maven Artifact\n" + "Manifest");
+        checkCommon("Bundle org.nuxeo.apidoc.core", "Bundle org.nuxeo.apidoc.core", groupTitle, "Documentation\n"
+                + "Deployment Order\n" + "Components\n" + "Packages\n" + "Maven Artifact\n" + "Manifest");
         try {
             String readme = AbstractExplorerTest.getReferenceContent("data/core_readme.txt");
             String parentReadme = AbstractExplorerTest.getReferenceContent("data/apidoc_readme.txt");
@@ -72,6 +75,7 @@ public class BundleArtifactPage extends ArtifactPage {
         checkArtifactId("nuxeo-apidoc-core");
         checkRequirements(null);
         checkDeploymentOrder(!legacy);
+        checkPackages("");
     }
 
     @Override
@@ -83,6 +87,7 @@ public class BundleArtifactPage extends ArtifactPage {
         checkArtifactId("nuxeo-apidoc-webengine");
         checkRequirements(List.of("org.nuxeo.ecm.webengine.core", "org.nuxeo.apidoc.core"));
         checkDeploymentOrder(true);
+        checkPackages(null); // legacy does not hold packages
     }
 
     @Override
@@ -105,6 +110,10 @@ public class BundleArtifactPage extends ArtifactPage {
 
     public void checkDeploymentOrder(boolean set) {
         assertEquals(!set, StringUtils.isBlank(deploymentOrder.getText()));
+    }
+
+    public void checkPackages(String expected) {
+        checkTextIfExists(expected, packages);
     }
 
 }

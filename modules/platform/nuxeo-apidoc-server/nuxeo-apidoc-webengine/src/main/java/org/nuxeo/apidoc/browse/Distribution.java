@@ -134,6 +134,9 @@ public class Distribution extends ModuleRoot {
         } else if (ApiBrowserConstants.check(url, ApiBrowserConstants.LIST_OPERATIONS)
                 || ApiBrowserConstants.check(url, ApiBrowserConstants.VIEW_OPERATION)) {
             point = ApiBrowserConstants.LIST_OPERATIONS;
+        } else if (ApiBrowserConstants.check(url, ApiBrowserConstants.LIST_PACKAGES)
+                || ApiBrowserConstants.check(url, ApiBrowserConstants.VIEW_PACKAGE)) {
+            point = ApiBrowserConstants.LIST_PACKAGES;
         } else if (ApiBrowserConstants.check(url, ApiBrowserConstants.VIEW_DOCUMENTATION)) {
             point = ApiBrowserConstants.VIEW_DOCUMENTATION;
         }

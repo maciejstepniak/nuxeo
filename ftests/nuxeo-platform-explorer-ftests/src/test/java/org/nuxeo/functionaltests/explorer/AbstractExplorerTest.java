@@ -39,6 +39,7 @@ import org.nuxeo.functionaltests.explorer.pages.artifacts.ComponentArtifactPage;
 import org.nuxeo.functionaltests.explorer.pages.artifacts.ContributionArtifactPage;
 import org.nuxeo.functionaltests.explorer.pages.artifacts.ExtensionPointArtifactPage;
 import org.nuxeo.functionaltests.explorer.pages.artifacts.OperationArtifactPage;
+import org.nuxeo.functionaltests.explorer.pages.artifacts.PackageArtifactPage;
 import org.nuxeo.functionaltests.explorer.pages.artifacts.ServiceArtifactPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -211,6 +212,18 @@ public abstract class AbstractExplorerTest extends AbstractTest {
             Locator.findElementWaitUntilEnabledAndClick(By.linkText("org.nuxeo.ecm.platform"));
         }
         BundleGroupArtifactPage apage = asPage(BundleGroupArtifactPage.class);
+        apage.checkReference(partial, legacy);
+    }
+
+    protected void checkPackages(boolean partial, boolean legacy) {
+        ListingFragment listing = asPage(ListingFragment.class);
+        listing.checkListing(1, "Platform Explorer", "/viewPackage/platform-explorer", "ADDON platform-explorer");
+
+        listing.navigateToFirstItem();
+        PackageArtifactPage apage = asPage(PackageArtifactPage.class);
+        if (hasNavigationHeader()) {
+            apage.checkSelectedTab();
+        }
         apage.checkReference(partial, legacy);
     }
 
